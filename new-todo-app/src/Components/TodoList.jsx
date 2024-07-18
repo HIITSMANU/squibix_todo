@@ -10,7 +10,7 @@ const TodoList = ({ text, id, isDone, deleteTodo, toggle, updateTodo }) => {
     };
 
     return (
-        <div className='flex-1 flex flex-col sm:flex-row items-center justify-between my-2 p-2 border rounded'>
+        <div className='flex-1 flex flex-row sm:flex-row items-center justify-between my-2 p-2 border rounded sm:flex sm:justify-between'>
             {isEditing ? (
                 <input 
                     type="text" 
@@ -27,7 +27,7 @@ const TodoList = ({ text, id, isDone, deleteTodo, toggle, updateTodo }) => {
                 </div>
             )}
 
-            <div className="flex items-center gap-2 mt-2 sm:mt-0">
+            <div className="flex items-center gap-2 mt-2 sm:mt-0 ">
                 {isEditing ? (
                     <button onClick={handleUpdate} className='px-2 py-1 bg-green-500 text-white rounded'><i class="fa-regular fa-floppy-disk"></i></button>
                 ) : (
