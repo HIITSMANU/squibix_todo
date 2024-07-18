@@ -10,13 +10,14 @@ const TodoList = ({ text, id, isDone, deleteTodo, toggle, updateTodo }) => {
     };
 
     return (
-        <div className='flex-1 flex flex-row sm:flex-row items-center justify-between my-2 p-2 border rounded sm:flex sm:justify-between'>
+        <>
+            <div className='flex-1 flex flex-row sm:flex-row items-center justify-between my-2 p-2 border rounded sm:flex sm:justify-between'>
             {isEditing ? (
                 <input 
                     type="text" 
                     value={newText} 
                     onChange={(e) => setNewText(e.target.value)} 
-                    className='flex-1 px-4 py-2 m-1 focus:bg-orange-50 border-2 border-orange-400 outline-orange-400'
+                    className='flex-1 px-1 w-20 py-2 m-1.5 focus:bg-orange-50 border-2 border-orange-400 outline-orange-400'
                 />
             ) : (
                 <div className="max-w-[200px] flex items-center flex-1 ">
@@ -29,7 +30,7 @@ const TodoList = ({ text, id, isDone, deleteTodo, toggle, updateTodo }) => {
 
             <div className="flex items-center gap-2 mt-2 sm:mt-0 ">
                 {isEditing ? (
-                    <button onClick={handleUpdate} className='px-2 py-1 bg-green-500 text-white rounded'><i class="fa-regular fa-floppy-disk"></i></button>
+                    <button title='update' onClick={handleUpdate} className='px-2 py-1 bg-green-500 text-white rounded'><i class="fa-regular fa-floppy-disk"></i></button>
                 ) : (
                     <button onClick={() => setIsEditing(true)} className='px-2 py-1 bg-blue-500 text-white rounded'><i class="fa-solid fa-pen-to-square"></i></button>
                 )}
@@ -39,6 +40,7 @@ const TodoList = ({ text, id, isDone, deleteTodo, toggle, updateTodo }) => {
                 <button onClick={() => deleteTodo(id)} className='px-2 py-1 bg-red-500 text-white rounded'><i class="fa-solid fa-trash-can"></i></button>
             </div>
         </div>
+        </>
     );
 }
 
