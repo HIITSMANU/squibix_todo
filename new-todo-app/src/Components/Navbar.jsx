@@ -16,11 +16,11 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Navbar() {
+export default function Navbar({authUser,onSignOut}) {
     const { theme, toggleTheme } = useTheme();
     
   return (
-    <Disclosure as="nav" className={`${theme === 'light' ? 'bg-white':'bg-gray-800'}  max-h-[72px]`}>
+    <Disclosure as="nav" className={`${theme === 'light' ? 'bg-white':'bg-gray-800'}  max-h-[72px] shadow-lg mb-2 sm:mb-10`}>
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center justify-between sm:hidden">

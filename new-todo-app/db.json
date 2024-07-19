@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "id": "6253",
+      "username": "manu",
+      "password": "12345"
+    },
+    {
+      "id": "cc85",
+      "username": "manasa",
+      "password": "1234567"
+    }
+  ],
+  "todos": [
+    {
+      "id": 1721382399361,
+      "text": "work",
+      "completed": false,
+      "category": "work",
+      "deadline": "2024-07-27 04:05",
+      "userId": "6253"
+    },
+    {
+      "id": 1721384124274,
+      "text": "meeting",
+      "completed": false,
+      "category": "work",
+      "deadline": "2024-07-19 06:30",
+      "userId": "6253"
+    }
+  ]
+}

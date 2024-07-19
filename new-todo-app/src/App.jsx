@@ -9,7 +9,6 @@ const App = () => {
     
     <div className={`${theme === 'light'?'bg-white':'bg-gray-800'} grid h-screen`}>
       <Navbar/>
-      <hr />
       <Todo/>
     </div>
   )

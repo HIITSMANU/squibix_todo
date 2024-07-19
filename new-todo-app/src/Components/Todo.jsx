@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import TodoList from './TodoList';
 import SkeletonLoading from './SkeletonLoading';
 import InputLoading from './InputLoading';
-import ThemeSwitcher from './ThemeSwitcher';
 import { useTheme } from '../Contexts/ThemeContext';
+import { useTodos } from '../Contexts/TodoContext';
 
 const Todo = () => {
     const nameRef = useRef();
@@ -11,19 +11,9 @@ const Todo = () => {
     const dateRef = useRef();
     const timeRef = useRef();
     const { theme } = useTheme();
-
-    const [todo, settodo] = useState(localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : []);
-    const [loading, setLoading] = useState(true);
+    const { todos, loading, addTodo, deleteTodo, toggleTodo, updateTodo } = useTodos();
     const [filter, setFilter] = useState('all');
     const [categoryFilter, setCategoryFilter] = useState('all');
-
-    useEffect(() => {
-        setTimeout(() => {
-            const storedTodos = localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : [];
-            settodo(storedTodos);
-            setLoading(false);
-        }, 1500); // Simulate a delay
-    }, []);
 
     const add = () => {
         const todoref = nameRef.current.value;
@@ -35,7 +25,7 @@ const Todo = () => {
             return null;
         }
 
-        const newtodo = {
+        const newTodo = {
             id: Date.now(),
             text: todoref,
             completed: false,
@@ -43,40 +33,13 @@ const Todo = () => {
             deadline: `${date} ${time}`
         };
 
-        settodo([...todo, newtodo]);
+        addTodo(newTodo);
         nameRef.current.value = "";
         dateRef.current.value = "";
         timeRef.current.value = "";
     }
 
-    const deleteTodo = (id) => {
-        const newtodo = todo.filter((todo) => todo.id !== id);
-        settodo(newtodo);
-    }
-
-    const toggle = (id) => {
-        settodo(todo.map((todo) => {
-            if (todo.id === id) {
-                return { ...todo, completed: !todo.completed };
-            }
-            return todo;
-        }));
-    }
-
-    const updateTodo = (id, newText) => {
-        settodo(todo.map((todo) => {
-            if (todo.id === id) {
-                return { ...todo, text: newText };
-            }
-            return todo;
-        }));
-    }
-
-    useEffect(() => {
-        localStorage.setItem("todos", JSON.stringify(todo));
-    }, [todo]);
-
-    const filteredTodos = todo.filter(item => {
+    const filteredTodos = todos.filter(item => {
         if (categoryFilter !== 'all' && item.category !== categoryFilter) return false;
         if (filter === 'completed') return item.completed;
         if (filter === 'uncompleted') return !item.completed;
@@ -84,21 +47,12 @@ const Todo = () => {
     });
 
     return (
-        <div className={`w-full overflow-y-auto mb-[10%] p-4 max-w-lg mx-auto flex flex-col  rounded shadow-lg ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}>
-            {/* <div className="flex flex-row justify-between items-center">
-                <div className="flex items-center justify-center gap-2 p-2">
-                    <h1 className='text-3xl font-semibold text-center'><i className="fa-solid fa-table-list"></i> My Todo</h1>
-                </div>
-                <div>
-                    <ThemeSwitcher />
-                </div>  
-            </div> */}
-
+        <div className={`w-full overflow-y-auto mb-[10%] p-4 max-w-lg mx-auto flex flex-col shadow-md  border-2  ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}>
             {loading ? (
                 <>
-                    <InputLoading/>
+                    <InputLoading />
                 </>
-            ) :(
+            ) : (
                 <>
                     <div className="flex flex-col sm:flex-row my-2 gap-4 justify-between">
                         <div className="flex flex-col flex-1">
@@ -111,7 +65,7 @@ const Todo = () => {
                             </div>
                         </div>
                         <div className="flex-1">
-                            <div className="flex flex-1 flex-col">
+                            <div className="flex-1 flex-col">
                                 <p className='text-gray-400 text-[14px] italic'><span className='text-red-600'>*</span>Please Choose Category </p>
                                 <select ref={categoryRef} className={`w-full px-1 py-2 rounded border ${theme === 'dark' ? 'border-gray-600 bg-gray-700 text-white' : 'border-orange-400'} focus:outline-none focus:ring-2 focus:ring-orange-500`}>
                                     <option value="">Select Category</option>
@@ -135,7 +89,7 @@ const Todo = () => {
                     </div>
 
                     <div className="flex flex-col sm:flex-row justify-between gap-2 mb-4">
-                        <div className="flex flex-col flex-1">
+                        <div className="flex flex-1 flex-col">
                             <p className='text-gray-400 text-[14px] italic'><span className='text-red-600'>*</span>Filter By Status</p>
                             <select onChange={(e) => setFilter(e.target.value)} className={`flex-1 px-4 py-2 rounded border ${theme === 'dark' ? 'border-gray-600 bg-gray-700 text-white' : 'border-orange-400'} focus:outline-none focus:ring-2 focus:ring-orange-500`}>
                                 <option value="all">All</option>
@@ -143,7 +97,7 @@ const Todo = () => {
                                 <option value="completed">Completed</option>
                             </select>
                         </div>
-                        <div className="flex flex-col flex-1">
+                        <div className="flex flex-1 flex-col">
                             <p className='text-gray-400 text-[14px] italic'><span className='text-red-600'>*</span>Filter By Category</p>
                             <select onChange={(e) => setCategoryFilter(e.target.value)} className={`flex-1 px-4 py-2 rounded border ${theme === 'dark' ? 'border-gray-600 bg-gray-700 text-white' : 'border-orange-400'} focus:outline-none focus:ring-2 focus:ring-orange-500`}>
                                 <option value="all">All Categories</option>
@@ -155,7 +109,6 @@ const Todo = () => {
                     </div>
                 </>
             )}
-
             <div className="flex flex-col gap-2 overflow-y-auto">
                 {loading ? (
                     <>
@@ -174,7 +127,7 @@ const Todo = () => {
                                 id={item.id} 
                                 isDone={item.completed} 
                                 deleteTodo={deleteTodo} 
-                                toggle={toggle} 
+                                toggle={toggleTodo} 
                                 updateTodo={updateTodo} 
                                 deadline={item.deadline} // Pass deadline to TodoList component
                             />
