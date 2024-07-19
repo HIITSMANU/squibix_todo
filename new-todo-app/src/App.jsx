@@ -7,6 +7,7 @@ const App = () => {
     
     <div className='bg-slate-400 grid h-screen'>
       <Navbar/>
+      <hr />
       <Todo/>
     </div>
   )
