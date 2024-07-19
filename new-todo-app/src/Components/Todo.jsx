@@ -8,6 +8,8 @@ import { useTheme } from '../Contexts/ThemeContext';
 const Todo = () => {
     const nameRef = useRef();
     const categoryRef = useRef();
+    const dateRef = useRef();
+    const timeRef = useRef();
     const { theme } = useTheme();
 
     const [todo, settodo] = useState(localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : []);
@@ -26,8 +28,10 @@ const Todo = () => {
     const add = () => {
         const todoref = nameRef.current.value;
         const category = categoryRef.current.value;
+        const date = dateRef.current.value;
+        const time = timeRef.current.value;
 
-        if (todoref === "" || category === "") {
+        if (todoref === "" || category === "" || date === "" || time === "") {
             return null;
         }
 
@@ -35,11 +39,14 @@ const Todo = () => {
             id: Date.now(),
             text: todoref,
             completed: false,
-            category: category
+            category: category,
+            deadline: `${date} ${time}`
         };
 
         settodo([...todo, newtodo]);
         nameRef.current.value = "";
+        dateRef.current.value = "";
+        timeRef.current.value = "";
     }
 
     const deleteTodo = (id) => {
@@ -77,15 +84,15 @@ const Todo = () => {
     });
 
     return (
-        <div className={`w-full p-4 max-w-lg mx-auto flex flex-col max-h-max rounded shadow-lg ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}>
-            <div className="flex flex-row justify-between items-center">
-                <div className="flex items-center justify-center gap-2 p-2 ">
+        <div className={`w-full mb-10 p-4 max-w-lg mx-auto flex flex-col max-h-max rounded shadow-lg ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}>
+            {/* <div className="flex flex-row justify-between items-center">
+                <div className="flex items-center justify-center gap-2 p-2">
                     <h1 className='text-3xl font-semibold text-center'><i className="fa-solid fa-table-list"></i> My Todo</h1>
                 </div>
                 <div>
                     <ThemeSwitcher />
                 </div>  
-            </div>
+            </div> */}
 
             {loading ? (
                 <>
@@ -93,7 +100,7 @@ const Todo = () => {
                 </>
             ) :(
                 <>
-                    <div className="flex flex-col sm:flex-row my-5 gap-4 justify-between">
+                    <div className="flex flex-col sm:flex-row my-2 gap-4 justify-between">
                         <div className="flex flex-col flex-1">
                             <p className='text-gray-400 text-[14px] italic'><span className='text-red-600'>*</span>Enter Your Task Here</p>
                             <div className='flex flex-row flex-1 items-center'>
@@ -113,6 +120,17 @@ const Todo = () => {
                                     <option value="sports">Sports</option>
                                 </select>
                             </div>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row my-5 gap-4 justify-between">
+                        <div className="flex flex-1 flex-col">
+                            <p className='text-gray-400 text-[14px] italic'><span className='text-red-600'>*</span>Select Due Date</p>
+                            <input ref={dateRef} className={`w-full px-4 py-2 rounded border ${theme === 'dark' ? 'border-gray-600 bg-gray-700 text-white' : 'border-orange-400'} focus:outline-none focus:ring-2 focus:ring-orange-500`} type="date" />
+                        </div>
+                        <div className="flex flex-1 flex-col">
+                            <p className='text-gray-400 text-[14px] italic'><span className='text-red-600'>*</span>Select Due Time</p>
+                            <input ref={timeRef} className={`w-full px-4 py-2 rounded border ${theme === 'dark' ? 'border-gray-600 bg-gray-700 text-white' : 'border-orange-400'} focus:outline-none focus:ring-2 focus:ring-orange-500`} type="time" />
                         </div>
                     </div>
 
@@ -158,6 +176,7 @@ const Todo = () => {
                                 deleteTodo={deleteTodo} 
                                 toggle={toggle} 
                                 updateTodo={updateTodo} 
+                                deadline={item.deadline} // Pass deadline to TodoList component
                             />
                         ))
                     )
