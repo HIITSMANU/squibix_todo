@@ -84,7 +84,7 @@ const Todo = () => {
     });
 
     return (
-        <div className={`w-full mb-10 p-4 max-w-lg mx-auto flex flex-col max-h-max rounded shadow-lg ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}>
+        <div className={`w-full overflow-y-auto mb-[10%] p-4 max-w-lg mx-auto flex flex-col  rounded shadow-lg ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}>
             {/* <div className="flex flex-row justify-between items-center">
                 <div className="flex items-center justify-center gap-2 p-2">
                     <h1 className='text-3xl font-semibold text-center'><i className="fa-solid fa-table-list"></i> My Todo</h1>
@@ -156,7 +156,7 @@ const Todo = () => {
                 </>
             )}
 
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 overflow-y-auto">
                 {loading ? (
                     <>
                         <SkeletonLoading />
