@@ -9,7 +9,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider>
       <TodoProvider>
-    <App />
+        <App />
     </TodoProvider>
     </ThemeProvider>
   </React.StrictMode>,

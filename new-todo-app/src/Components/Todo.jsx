@@ -73,6 +73,7 @@ const Todo = () => {
                                     <option value="work">Work</option>
                                     <option value="personal">Personal</option>
                                     <option value="sports">Sports</option>
+                                    <option value="others">Others..</option>
                                 </select>
                             </div>
                         </div>
@@ -105,6 +106,7 @@ const Todo = () => {
                                 <option value="work">Work</option>
                                 <option value="personal">Personal</option>
                                 <option value="sports">Sports</option>
+                                <option value="others">Others...</option>
                             </select>
                         </div>
                     </div>
