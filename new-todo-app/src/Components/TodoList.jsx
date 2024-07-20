@@ -14,9 +14,11 @@ const TodoList = ({ text, id, isDone, deadline }) => {
     };
 
     return (
-        <>
+        <>  
+            
             <div className='flex-1 flex flex-row sm:flex-row items-center justify-between my-1 p-2 border-2 rounded sm:flex sm:justify-between m-1 h-full '>
                 {isEditing ? (
+                    
                     <input 
                         type="text" 
                         value={newText} 
@@ -36,17 +38,17 @@ const TodoList = ({ text, id, isDone, deadline }) => {
                     {isEditing ? (
                         <button title='update' onClick={handleUpdate} className='px-2 py-1 bg-green-500 text-white rounded'><i className="fa-regular fa-floppy-disk"></i></button>
                     ) : (
-                        <button onClick={() => setIsEditing(true)} className='px-2 py-1 bg-blue-500 text-white rounded'><i className="fa-solid fa-pen-to-square"></i></button>
+                        <button title='Edit' onClick={() => setIsEditing(true)} className='px-2 py-1 bg-blue-500 text-white rounded'><i className="fa-solid fa-pen-to-square"></i></button>
                     )}
-                    <button onClick={() => toggleTodo(id)} className='px-2 py-1 bg-yellow-500 text-white rounded'>
+                    <button title={`${isDone ? 'Undo':'Mark as Done'}`} onClick={() => toggleTodo(id)} className='px-2 py-1 bg-yellow-500 text-white rounded'>
                         <i className={`${isDone ? 'fa-solid fa-rotate-left' : 'fa-solid fa-check'}`}></i>
                     </button>
-                    <button onClick={() => deleteTodo(id)} className='px-2 py-1 bg-red-500 text-white rounded'><i className="fa-solid fa-trash-can"></i></button>
+                    <button title='Delete' onClick={() => deleteTodo(id)} className='px-2 py-1 bg-red-500 text-white rounded'><i className="fa-solid fa-trash-can"></i></button>
                 </div>
             </div>
             {deadline && (
                 <div className='text-sm text-gray-500'>
-                    Deadline: {deadline}<span className={`${isDone ? 'text-[10px]   rounded-xl px-1 mx-1 bg-green-900':'text-[10px] px-1 mx-1 rounded-xl bg-yellow-800'}`}>.</span><span className='text-black'>{isDone ? 'Done':'Wait'}</span>
+                    Deadline: {deadline}<span className={`${isDone ? 'text-[10px]   rounded-xl px-1 mx-1 bg-green-900':'text-[10px] px-1 mx-1 rounded-xl bg-yellow-800'}`}>.</span><span className={`${theme === 'dark' ? 'text-white':'text-black'}`}>{isDone ? 'Done':'Wait'}</span>
                 </div>
             )}
         </>

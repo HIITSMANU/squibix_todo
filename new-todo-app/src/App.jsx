@@ -1,17 +1,28 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Todo from './Components/Todo'
 import Navbar from './Components/Navbar'
 import { useTheme } from './Contexts/ThemeContext'
+import { AuthContext } from './Contexts/AuthContext'
+import Login from './Pages/Login'
 
 const App = () => {
   const {theme} = useTheme()
+  const {user} = useContext(AuthContext)
   return (
     
-    <div className={`${theme === 'light'?'bg-white':'bg-gray-800'} grid h-screen`}>
-      <Navbar/>
-      <Todo/>
+    <div className={`${theme === 'light'?'bg-white':'bg-gray-800'} grid h-screen py-2`}>
+       <Navbar/>
+      {
+        !user ? (
+          <Login/>
+        ):(
+          <>
+            <Todo/>
+          </>
+        )}
+      
     </div>
-  )
+  );
 }
 
 export default App
