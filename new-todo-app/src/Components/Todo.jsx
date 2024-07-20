@@ -10,6 +10,7 @@ const Todo = () => {
     const categoryRef = useRef();
     const dateRef = useRef();
     const timeRef = useRef();
+    const totimeRef = useRef();
     const { theme } = useTheme();
     const { todos, loading, addTodo, deleteTodo, toggleTodo, updateTodo } = useTodos();
     const [filter, setFilter] = useState('all');
@@ -20,8 +21,9 @@ const Todo = () => {
         const category = categoryRef.current.value;
         const date = dateRef.current.value;
         const time = timeRef.current.value;
+        const totime = totimeRef.current.value;
 
-        if (todoref === "" || category === "" || date === "" || time === "") {
+        if (todoref === "" || category === "" || date === "" || time === ""|| totime === "") {
             return null;
         }
 
@@ -30,13 +32,14 @@ const Todo = () => {
             text: todoref,
             completed: false,
             category: category,
-            deadline: `${date} ${time}`
+            deadline: `${date} ${time} - ${totime}`
         };
 
         addTodo(newTodo);
         nameRef.current.value = "";
         dateRef.current.value = "";
         timeRef.current.value = "";
+        totimeRef.current.value = "";
         categoryRef.current.value="";
     }
 
@@ -85,8 +88,12 @@ const Todo = () => {
                             <input ref={dateRef} className={`w-full px-4 py-2 rounded border ${theme === 'dark' ? 'border-gray-600 bg-gray-700 text-white' : 'border-orange-400'} focus:outline-none focus:ring-2 focus:ring-orange-500`} type="date" />
                         </div>
                         <div className="flex flex-1 flex-col">
-                            <p className='text-gray-400 text-[14px] italic'><span className='text-red-600'>*</span>Select Due Time</p>
+                            <p className='text-gray-400 text-[14px] italic'><span className='text-red-600'>*</span>Select From Time</p>
                             <input ref={timeRef} className={`w-full px-4 py-2 rounded border ${theme === 'dark' ? 'border-gray-600 bg-gray-700 text-white' : 'border-orange-400'} focus:outline-none focus:ring-2 focus:ring-orange-500`} type="time" />
+                        </div>
+                        <div className="flex flex-1 flex-col">
+                            <p className='text-gray-400 text-[14px] italic'><span className='text-red-600'>*</span>Select To Time</p>
+                            <input ref={totimeRef} className={`w-full px-4 py-2 rounded border ${theme === 'dark' ? 'border-gray-600 bg-gray-700 text-white' : 'border-orange-400'} focus:outline-none focus:ring-2 focus:ring-orange-500`} type="time" />
                         </div>
                     </div>
 
@@ -132,7 +139,7 @@ const Todo = () => {
                                 deleteTodo={deleteTodo} 
                                 toggle={toggleTodo} 
                                 updateTodo={updateTodo} 
-                                deadline={item.deadline} // Pass deadline to TodoList component
+                                deadline={item.deadline}
                             />
                         ))
                     )

@@ -46,7 +46,7 @@ const TodoList = ({ text, id, isDone, deadline }) => {
             </div>
             {deadline && (
                 <div className='text-sm text-gray-500'>
-                    Deadline: {deadline}
+                    Deadline: {deadline}<span className={`${isDone ? 'text-[10px]   rounded-xl px-1 mx-1 bg-green-900':'text-[10px] px-1 mx-1 rounded-xl bg-yellow-800'}`}>.</span><span className='text-black'>{isDone ? 'Done':'Wait'}</span>
                 </div>
             )}
         </>
