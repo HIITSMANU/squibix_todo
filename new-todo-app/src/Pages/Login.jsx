@@ -17,7 +17,7 @@ const Login = () => {
   };
 
   return (
-    <div className={`min-h-screen m-2  flex items-center justify-center  shadow-lg ${theme === 'light' ? 'bg-white' :'bg-gray-800'}p-3`}>
+    <div className={` m-2  flex items-center justify-center  shadow-lg ${theme === 'light' ? 'bg-white' :'bg-gray-800'}p-3`}>
       <div className={`relative w-full max-w-md mb-[10%] ${theme === 'light'? 'bg-white border-2 border-gray-500':'bg-gray-800 border-2 '}  p-8 rounded-lg shadow-md`}>
         <div className={`border-2 rounded-full text-center h-20 w-20 mx-auto p-5 ${theme === 'light' ? 'bg-white text-black' : 'bg-gray-800 text-white'}  absolute -top-10 left-[40%]`}>
             <i  className="fa-solid fa-users text-[30px]"></i>
@@ -33,7 +33,7 @@ const Login = () => {
               onChange={(e) => setUsername(e.target.value)}
               placeholder="Username"
               required
-              className={`w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${theme === 'light'? 'bg-white border-1' : 'bg-gray-800 border-1'}`}
+              className={`w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${theme === 'light'? 'bg-white border-1' : 'bg-gray-800 border-1 text-white'}`}
             />
           </div>
           <div>
@@ -44,7 +44,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
               required
-              className={`w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${theme === 'light'? 'bg-white border-1' : 'bg-gray-800 border-1'}`}
+              className={`w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${theme === 'light'? 'bg-white border-1' : 'bg-gray-800 border-1 text-white'}`}
             />
           </div>
           <button
