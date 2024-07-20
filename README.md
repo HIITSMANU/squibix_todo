@@ -56,7 +56,7 @@ To run server
 ```bash
   npm run dev
 ```
-Username and Password for the wesite
+Username and Password for the website
 
 ```bash
   Username : testuser
