@@ -2,19 +2,27 @@
 
 # TODOS
 
-This is a Todo App where the user will log into the website and they can first enter the task to be accomplised and after that they can choose the category of thier choice ,coming next they can choose the date of doing the task and after that they can choose the from and to time to accomplish the task and after that they can add the todo , they can filter based on category and status(Active or Completed) and also they can search the todos using the search filter. Also this website includes theme switcher(dark and light modes) and on refreshing the page the todos will not vanish as the data is stored in local storage. 
+This Todo App enables users to log in securely, enter tasks to be accomplished, select a preferred category, choose a specific date, and set a time range for task completion. Users can then add the todo to their list. The app features advanced filtering options by category and status (Active or Completed) and includes a search function for efficient task retrieval. Additionally, it offers a theme switcher (dark and light modes) for a customized user interface. To ensure data persistence, all tasks are stored in local storage, preventing data loss upon page refresh. This app combines user-friendly task management with a technically robust framework, enhancing productivity and efficiency.
 
 ## Tech Stack
 
-**Frontend** - React js, Tailwind css, Font-Awesome icons
+**Frontend**: Built using React for a responsive and interactive user interface.
+**State Management** -  Context API for managing authentication, theme, and tasks.
+**Local Storage**: Leveraged for data persistence, ensuring tasks remain available across sessions.
+**Styling**: Tailwind CSS for a modern and adaptive design.
+**Icons** - Font-Awesome Icons
 
 ## Features
 
-- Login Functionality
-- Light/dark mode toggle
-- Live preview
-- Filter(Category, Status, Search)
-- Marking as Completed if the task is Completed
+- User Authentication
+- Task Entry
+- Categorization
+- Date and Time Selection
+- Add Task
+- Filtering
+- Search Functionality
+- Theme Switching
+- Persistent Storage
 
 
 ## Screenshots
