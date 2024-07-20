@@ -15,7 +15,7 @@ const TodoList = ({ text, id, isDone, deadline }) => {
 
     return (
         <>
-            <div className='flex-1 flex flex-row sm:flex-row items-center justify-between my-1 p-2 border-2 rounded sm:flex sm:justify-between m-1  '>
+            <div className='flex-1 flex flex-row sm:flex-row items-center justify-between my-1 p-2 border-2 rounded sm:flex sm:justify-between m-1 h-full '>
                 {isEditing ? (
                     <input 
                         type="text" 

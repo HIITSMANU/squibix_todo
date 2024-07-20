@@ -51,7 +51,7 @@ const Todo = () => {
     });
 
     return (
-        <div className={`w-full  sm:max-h-30  overflow-y-auto mb-[10%] p-4 max-w-lg mx-auto flex flex-col shadow-md  border-2  ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}>
+        <div className={`w-full  overflow-y-auto mb-[10%] p-4 max-w-lg mx-auto flex flex-col shadow-md  border-2  ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}>
             {loading ? (
                 <>
                     <InputLoading />
@@ -119,7 +119,7 @@ const Todo = () => {
                     </div>
                 </>
             )}
-            <div className="flex flex-col gap-2 overflow-y-scroll">
+            <div className="flex flex-col gap-2 sm:overflow-y-scroll">
                 {loading ? (
                     <>
                         <SkeletonLoading />
