@@ -2,6 +2,7 @@
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../Contexts/AuthContext";
 import { useTheme } from "../Contexts/ThemeContext";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -12,7 +13,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!login(username, password)) {
-      alert("Invalid credentials");
+      toast.warning("Invalid credentials!!Please note the credentials are given in the user icon!!Thank You");
     }
   };
 

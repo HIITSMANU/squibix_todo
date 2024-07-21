@@ -1,5 +1,6 @@
 import React, { createContext, useState } from "react";
 import users from "../users.json";
+import { toast } from "react-toastify";
 
 const AuthContext = createContext();
 
@@ -16,6 +17,7 @@ const AuthProvider = ({ children }) => {
 
     if (founduser) {
       setUser(founduser);
+      toast.success("Login Successfull")
       console.log(user);
       localStorage.setItem("user", JSON.stringify(founduser));
     }
