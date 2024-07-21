@@ -5,6 +5,7 @@ import { useTheme } from "./Contexts/ThemeContext";
 import { AuthContext } from "./Contexts/AuthContext";
 import Login from "./Pages/Login";
 import Footer from "./Pages/Footer";
+import {ToastContainer} from "react-toastify"
 
 const App = () => {
   const { theme } = useTheme();
@@ -15,6 +16,7 @@ const App = () => {
         theme === "light" ? "bg-white" : "bg-gray-800"
       } grid h-screen py-2`}
     >
+      <ToastContainer/>
       <Navbar />
       {!user ? (
         <Login />

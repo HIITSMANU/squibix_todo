@@ -1,4 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const TodoContext = createContext();
 
@@ -28,10 +30,13 @@ export const TodoProvider = ({ children }) => {
 
   const addTodo = (todo) => {
     setTodos([...todos, todo]);
+    toast.success("Task Added!!")
+
   };
 
   const deleteTodo = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
+    toast.error("Task Deleted")
   };
 
   const toggleTodo = (id) => {
@@ -43,7 +48,9 @@ export const TodoProvider = ({ children }) => {
         return todo;
       })
     );
+    
   };
+
 
   const updateTodo = (id, newText) => {
     setTodos(
@@ -54,6 +61,7 @@ export const TodoProvider = ({ children }) => {
         return todo;
       })
     );
+    toast.success("Task Updated")
   };
 
   return (

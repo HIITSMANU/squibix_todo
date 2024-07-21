@@ -13,7 +13,7 @@ import { AuthContext } from "../Contexts/AuthContext";
 import { useContext } from "react";
 
 const navigation = [
-  { name: "Dashboard", href: "#", current: true },
+  { name: "Dashboard",  current: true },
   { name: "Team", href: "#", current: false },
   { name: "Projects", href: "#", current: false },
   { name: "Calendar", href: "#", current: false },
@@ -89,14 +89,14 @@ export default function Navbar() {
                   {!user ? (
                     <>
                       <a
-                        href="#"
+                        
                         className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
                       >
                         <strong>Username</strong> - testuser
                       </a>
                       <hr />
                       <a
-                        href="#"
+                        
                         className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
                       >
                         <strong>Password</strong> - 12345
@@ -105,7 +105,7 @@ export default function Navbar() {
                   ) : (
                     <>
                       <a
-                        href="#"
+                        
                         className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
                       >
                         Welcome {user.username}
@@ -113,7 +113,7 @@ export default function Navbar() {
                       <hr />
                       <MenuItem>
                         <a
-                          href="#"
+                          
                           onClick={logout}
                           className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
                         >

@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { useTheme } from "../Contexts/ThemeContext";
 import { useTodos } from "../Contexts/TodoContext";
+import { toast } from "react-toastify";
 
 const TodoList = ({ text, id, isDone, deadline }) => {
   const [isEditing, setIsEditing] = useState(false);
   const { theme } = useTheme();
   const { deleteTodo, toggleTodo, updateTodo } = useTodos();
   const [newText, setNewText] = useState(text);
+  
 
   const handleUpdate = () => {
     updateTodo(id, newText);
@@ -67,6 +69,7 @@ const TodoList = ({ text, id, isDone, deadline }) => {
             onClick={() => toggleTodo(id)}
             className="px-2 py-1 bg-yellow-500 text-white rounded"
           >
+            
             <i
               className={`${
                 isDone ? "fa-solid fa-rotate-left" : "fa-solid fa-check"
