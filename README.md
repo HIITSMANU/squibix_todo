@@ -79,7 +79,7 @@ This Todo App enables users to log in securely, enter tasks to be accomplished, 
 **To clone the Project**
 
 ```bash
-  git clone 
+  git clone https://github.com/HIITSMANU/squibix_todo.git
 ```
 **To add Tailwind-css into the project**
 
