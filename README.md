@@ -76,6 +76,11 @@ This Todo App enables users to log in securely, enter tasks to be accomplished, 
 ```bash
   npm install react-router-dom
 ```
+**To clone the Project**
+
+```bash
+  git clone 
+```
 **To add Tailwind-css into the project**
 
 ```bash
