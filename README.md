@@ -42,41 +42,46 @@ This Todo App enables users to log in securely, enter tasks to be accomplished, 
 
 ## Run Locally
 
-To create react-vite projects
+**To create react-vite projects**
 
 ```bash
   npm create vite@latest
 ```
 
-Go to the project directory
+**Go to the project directory**
 
 ```bash
   cd project-name
 ```
-Install dependencies
+**Install dependencies**
 
 ```bash
   npm install
 ```
 
-To run server
+**To run server**
 
 ```bash
   npm run dev
 ```
-Username and Password for the website
+**Username and Password for the website**
 
 ```bash
   Username : testuser
   Password : 12345
 ```
 
-To add react-router-dom dependency
+**To add react-router-dom dependency**
 
 ```bash
   npm install react-router-dom
 ```
-To add Tailwind-css into the project
+**To clone the Project**
+
+```bash
+  git clone https://github.com/HIITSMANU/squibix_todo.git
+```
+**To add Tailwind-css into the project**
 
 ```bash
   npm install -D tailwindcss
