@@ -1,34 +1,42 @@
-import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import ThemeSwitcher from './ThemeSwitcher'
-import { useTheme } from '../Contexts/ThemeContext'
-import { AuthContext } from '../Contexts/AuthContext'
-import { useContext } from 'react'
+import {
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuItems,
+} from "@headlessui/react";
+import ThemeSwitcher from "./ThemeSwitcher";
+import { useTheme } from "../Contexts/ThemeContext";
+import { AuthContext } from "../Contexts/AuthContext";
+import { useContext } from "react";
 
 const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
-]
-
-
+  { name: "Dashboard", href: "#", current: true },
+  { name: "Team", href: "#", current: false },
+  { name: "Projects", href: "#", current: false },
+  { name: "Calendar", href: "#", current: false },
+];
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 export default function Navbar() {
-    const { theme, toggleTheme } = useTheme();
-    const {user,logout} = useContext(AuthContext)
-    
+  const { theme, toggleTheme } = useTheme();
+  const { user, logout } = useContext(AuthContext);
+
   return (
-    <Disclosure as="nav" className={`${theme === 'light' ? 'bg-white':'bg-gray-800'}  max-h-[72px] shadow-lg mb-2 sm:mb-10`}>
+    <Disclosure
+      as="nav"
+      className={`${
+        theme === "light" ? "bg-white" : "bg-gray-800"
+      }  max-h-[72px] shadow-lg mb-2 sm:mb-10`}
+    >
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
-          <div className="absolute inset-y-0 left-0 flex items-center justify-between sm:hidden">
-            
-          </div>
+          <div className="absolute inset-y-0 left-0 flex items-center justify-between sm:hidden"></div>
           <div className="flex flex-1 items-center  sm:items-stretch sm:justify-start">
             <div className="flex flex-shrink-0 items-center">
               <img
@@ -38,34 +46,39 @@ export default function Navbar() {
               />
             </div>
             <div className="p-2 sm:ml-6 sm:block">
-              
-              <h1 className={`${theme === 'light'?'text-black':'text-white'} text-[30px]`}>TODOS</h1>
+              <h1
+                className={`${
+                  theme === "light" ? "text-black" : "text-white"
+                } text-[30px]`}
+              >
+                TODOS
+              </h1>
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <button
               type="button"
               onClick={toggleTheme}
-              className={` ${theme === 'light' ? '':'bg-gray-800'}relative rounded-full  p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800`}
+              className={` ${
+                theme === "light" ? "" : "bg-gray-800"
+              }relative rounded-full  p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800`}
             >
               <span className="absolute -inset-1.5" />
               <span className="sr-only">View notifications</span>
-              <ThemeSwitcher/>
-              {/* <BellIcon aria-hidden="true" className="h-6 w-6" /> */}
+              <ThemeSwitcher />
             </button>
 
-            {/* Profile dropdown */}
+            
             <Menu as="div" className="relative ml-3">
               <div>
                 <MenuButton className="relative flex  rounded-full  text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                   <span className="absolute -inset-1.5" />
                   <span className="sr-only">Open user menu</span>
-                  {/* <img
-                    alt=""
-                    src='https://icons.veryicon.com/png/o/miscellaneous/icon-icon-of-ai-intelligent-dispensing/login-user-name-1.png'
-                    className="h-8 w-8 rounded-full"
-                  /> */}
-                  <i className={`fa-solid fa-user ${theme === 'light' ? 'border-gray-500' :'text-white'} text-[20px] border-2 p-2 rounded-full`}></i>
+                  <i
+                    className={`fa-solid fa-user ${
+                      theme === "light" ? "border-gray-500" : "text-white"
+                    } text-[20px] border-2 p-2 rounded-full`}
+                  ></i>
                 </MenuButton>
               </div>
               <MenuItems
@@ -75,23 +88,36 @@ export default function Navbar() {
                 <MenuItem>
                   {!user ? (
                     <>
-                      <a href="#" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
-                         username - testuser
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
+                      >
+                        username - testuser
                       </a>
-                      <a href="#" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
+                      >
                         password - 12345
                       </a>
                     </>
-                  ):(
+                  ) : (
                     <>
-                      <a href="#" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
+                      >
                         Hello {user.username}
                       </a>
                       <MenuItem>
-                      <a href="#" onClick={logout} className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
-                        Sign out
-                      </a>
-                    </MenuItem>
+                        <a
+                          href="#"
+                          onClick={logout}
+                          className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
+                        >
+                          Sign out
+                        </a>
+                      </MenuItem>
                     </>
                   )}
                 </MenuItem>
@@ -108,10 +134,12 @@ export default function Navbar() {
               key={item.name}
               as="a"
               href={item.href}
-              aria-current={item.current ? 'page' : undefined}
+              aria-current={item.current ? "page" : undefined}
               className={classNames(
-                item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                'block rounded-md px-3 py-2 text-base font-medium',
+                item.current
+                  ? "bg-gray-900 text-white"
+                  : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                "block rounded-md px-3 py-2 text-base font-medium"
               )}
             >
               {item.name}
@@ -120,5 +148,5 @@ export default function Navbar() {
         </div>
       </DisclosurePanel>
     </Disclosure>
-  )
+  );
 }
