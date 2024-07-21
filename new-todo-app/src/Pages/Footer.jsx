@@ -9,7 +9,7 @@ const Footer = () => {
     <>  
         
         <hr />
-        <footer className={`w-full ${theme === 'light' ? 'bg-white':'bg-gray-800 text-white'} p-1  text-center`}>
+        <footer className={`w-full italic ${theme === 'light' ? 'bg-white text-gray-600':'bg-gray-800 text-white'} p-1  text-center`}>
             <span>Made with <i class="fa fa-heart pulse text-red-700 text-[10px]"></i> by S.Manohar</span>
         </footer>
     </>
