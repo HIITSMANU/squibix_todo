@@ -92,13 +92,14 @@ export default function Navbar() {
                         href="#"
                         className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
                       >
-                        username - testuser
+                        <strong>Username</strong> - testuser
                       </a>
+                      <hr />
                       <a
                         href="#"
                         className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
                       >
-                        password - 12345
+                        <strong>Password</strong> - 12345
                       </a>
                     </>
                   ) : (
@@ -107,8 +108,9 @@ export default function Navbar() {
                         href="#"
                         className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
                       >
-                        Hello {user.username}
+                        Welcome {user.username}
                       </a>
+                      <hr />
                       <MenuItem>
                         <a
                           href="#"

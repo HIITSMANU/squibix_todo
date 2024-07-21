@@ -12,8 +12,7 @@ const Todo = () => {
   const timeRef = useRef();
   const totimeRef = useRef();
   const { theme } = useTheme();
-  const { todos, loading, addTodo, deleteTodo, toggleTodo, updateTodo } =
-    useTodos();
+  const { todos, loading, addTodo, deleteTodo, toggleTodo, updateTodo } = useTodos();
   const [filter, setFilter] = useState("all");
   const [categoryFilter, setCategoryFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
@@ -64,7 +63,8 @@ const Todo = () => {
   });
 
   return (
-    <div
+   <>
+     <div
       className={`w-full h-full overflow-y-auto mb-[10%] p-4 max-w-lg mx-auto flex flex-col shadow-md border-2 ${
         theme === "dark" ? "bg-gray-800 text-white" : "bg-white text-black"
       }`}
@@ -75,7 +75,7 @@ const Todo = () => {
         </>
       ) : (
         <>
-          <div className="flex flex-col sm:flex-row my-2 gap-4 justify-between">
+          <div className="flex flex-col sm:flex-row my-1 gap-4 justify-between">
             <div className="flex flex-col flex-1">
               <p className="text-gray-400 text-[14px] italic">
                 <span className="text-red-600">*</span>Enter Your Task Here
@@ -254,6 +254,8 @@ const Todo = () => {
         )}
       </div>
     </div>
+    <br />
+   </>
   );
 };
 

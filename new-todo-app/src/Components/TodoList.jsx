@@ -88,14 +88,14 @@ const TodoList = ({ text, id, isDone, deadline }) => {
           <span
             className={`${
               isDone
-                ? "text-[10px]   rounded-xl px-1 mx-1 bg-green-900"
+                ? "text-[10px]   rounded-full px-1 mx-1 bg-green-900"
                 : "text-[10px] px-1 mx-1 rounded-xl bg-yellow-800"
             }`}
           >
-            .
+            
           </span>
           <span className={`${theme === "dark" ? "text-white" : "text-black"}`}>
-            {isDone ? "Done" : "Wait"}
+            {isDone ? "Done" : "Not Done"}
           </span>
         </div>
       )}
